@@ -16,7 +16,6 @@
 	margin: 0;
 	padding: 0;
 }
-
 body::after {
 	content: "";
 	background: url("https://images.unsplash.com/photo-1445426463131-9dd114aa527b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1151&q=80") no-repeat center/cover;
@@ -41,7 +40,6 @@ body {
 .d-block{
   display: block;
 }
-
 nav{
   text-align: center; 
 }
@@ -229,7 +227,7 @@ form{
 <p>How would your past self describe you if they saw you now? Would they be proud of what you accomplished? Would you give any advice to your past self? The real question is "how would you know you would be happier if you didn't make those mistakes in the past"? The person I am today is from a combination of my experiences, how I was raised and the knowledge I accumulated throughout the years. Before thinking "what could I have been", I should remember that without those experiences in my life I would never know what I know now. Sometimes we can only truly learn something from experiencing it. Be proud of who you are and the journey you took to get here.</p>
 <div id="likes-container">
 <p id="likes">500</p>
-<button id="likeBTN"><img id="heart-image" src="/images/heart_image.JPG"></button>
+<button id="likeBTN"><img alt="picture" id="heart-image" src="/images/heart_image.JPG"></button>
 </div>
 <button id="postBTN">Post a Comment</button>
 <h3 id="comments-heading" class="text-center">Comments</h3>
@@ -241,34 +239,33 @@ form{
   <p id="user-text"></p>
 </section>
 <form class="text-center">
-<label class="d-block" for="name">First Name</label>
-<input class="d-block" type="text" id="fName" name="name" placeholder="Enter Your First Name" maxlength="8">
-<br>
-<label class="d-block" for="rating">Rate this blog(5 being the best):</label>
-  <input type= "radio" name="rating" value="1" id="rating1" required>1
-  <input type= "radio" name="rating" value="2" id="rating2">2
-  <input type= "radio" name="rating" value="3" id="rating3">3
-  <input type= "radio" name="rating" value="4" id="rating4">4
-  <input type= "radio" name="rating" value="5" id="rating5">5
+  <label class="d-block" for="fName">First Name</label>
+  <input class="d-block" type="text" id="fName" name="name" placeholder="Enter Your First Name" maxlength="8">
+  <br>
+  <label class="d-block" for="rating">Rate this blog(5 being the best):</label>
+  <input type= "radio" name="rating" value="1" id="rating" required>1
+  <input type= "radio" name="rating" value="2" id="rating">2
+  <input type= "radio" name="rating" value="3" id="rating">3
+  <input type= "radio" name="rating" value="4" id="rating">4
+  <input type= "radio" name="rating" value="5" id="rating">5
   <br>
   <br>
   <label for="message"></label>
-  <textarea name="message" id="message" cols="50" row="5" maxlength="30" placeholder="type comment(max 30 characters)"></textarea>
+  <textarea name="message" id="message" cols="50" maxlength="30" placeholder="type comment(max 30 characters)"></textarea>
   <button id="submitBTN" type="submit">Submit</button>  
   <button type="reset">Reset</button>
   <button id="cancelBTN">Cancel Comment</button> 
 </form>
 <script>
-
-let likeCount = 500;
-let rating ='';
+let likeCount = 500,
+rating ='';
 $('#likeBTN').click(function(){
-  if(likeCount === 500){
-likeCount++;
-$('#likes').text(likeCount);
+if(likeCount === 500){
+  likeCount++;
+  $('#likes').text(likeCount);
 }
 else{
-  alert(`You can only like once but thanks for the gesture.`)
+  alert(`You can only like once but thanks for the gesture.`);
 }
 });
 $('#submitBTN').click(function(){
@@ -299,7 +296,8 @@ $('#postBTN').click(function(){
   $('#comments-heading').hide();
   $('#no-comments').hide();
   $('#likes-container').hide();
-})
+});
+
 $('#cancelBTN').click(function(){
   $('#form_id').trigger("reset");
   $('form').css('display', 'none');
@@ -307,9 +305,10 @@ $('#cancelBTN').click(function(){
   $('#comments-heading').show();
   $('#no-comments').show();
   $('#likes-container').show();
-})
+});
+
 function getRadioChecked(){
-  let radios = document.getElementsByName('rating');
+let radios = document.getElementsByName('rating');
 for (let i = 0; i< radios.length; i++) {
   if (radios[i].checked) {
     rating = ` User rating: ${radios[i].value} stars`;
