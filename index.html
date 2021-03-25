@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="author" content="Daniel Wilson">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Daniel Wilson Blog Theme</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="#" />
+  <style>
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body::after {
+	content: "";
+	background: url("https://images.unsplash.com/photo-1445426463131-9dd114aa527b?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1151&q=80") no-repeat center/cover;
+	opacity: 0.50;
+	top: -10px;
+	left: -10px;
+	bottom: 0;
+	right: 0;
+	position: fixed;
+	z-index: -1;
+}
+body {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	margin: 0 auto;
+	padding: 1em;
+}
+.text-center{
+  text-align: center;
+}
+.d-block{
+  display: block;
+}
+
+nav{
+  text-align: center; 
+}
+li a{
+  text-decoration: none;
+  margin: 0 0.5em;
+  color: black;
+}
+li{
+  display: inline;
+}
+li a:hover{
+  color: green;
+}
+header h1, header h3{
+  font-family: 'Londrina Outline', cursive;
+}
+header h1{
+  margin: 1em 0 0 0;
+  font-size: 3rem;
+}
+header h3{
+  font-size: 1.5rem;
+  margin: 0 0 1em 0;
+}
+#full-container p:first-of-type{
+  width: 50%;
+  text-align: center;
+  margin: 0 auto 1em auto;
+}
+#likes-container{
+  margin: 0 auto;
+  text-align: center;
+  width: 10%;
+  height: 10%;
+}
+#likes-container button:first-of-type{
+  display: block;
+  height: 50%;
+  width: 50%;
+  margin: 0 auto 0 auto;
+}
+#likes-container p:first-of-type{
+  margin-bottom: 0;
+}
+#heart-image{
+  display: block;
+  width: 100%;
+}
+#postBTN{
+  padding: 1em;
+  display: block;
+  margin: 1em auto;
+}
+#comments-heading{
+  text-decoration: underline;
+  margin-top: 0.5em;
+}
+#no-comments{
+  margin-top: 0.5em;
+}
+form{
+  display: none;
+  width: 50%;
+  border: solid black;
+  padding: 1em;
+  margin: 0 auto;
+}
+label,input[type="text"], textarea{
+  width: 100%;
+}
+input[type="text"]{
+  padding: 0.5em;
+}
+form button{
+  padding: 0.5em;
+  margin: 0.5em;
+}
+#users-comment{
+  display: none;
+  grid-template-columns: repeat(5,1fr);
+  grid-template-rows: repeat(2,1fr);
+  width: 35%;
+  height: 35%;
+  margin: 1em auto 0 auto;
+}
+#userImg{
+  grid-column: 1 / span 1; 
+  height: 60%;
+  width: 60%;
+  margin: 0 auto;
+  visibility: hidden;
+}
+#user-name{
+  grid-column: 2 / span 1; 
+  text-align: left;
+}
+#user-rating{
+  grid-column: 4 / span 2; 
+}
+#user-text{
+  grid-row-start: 2;
+  grid-column: 2 / span 5;
+}
+@media(max-width: 754px) and (min-width: 400px){
+
+}
+@media(max-width: 399px){
+
+}
+</style>
+</head>
+<body>
+<header>
+<nav>
+  <ul>
+    <li><a href="#">Home</a></li>
+    <li><a href="https://dan-personalwebsite.netlify.app/" target="_blank">About</a></li>
+    <li><a href="http://www.blogsearchengine.org/" target="_blank">Search Blogs</a></li>
+  </ul>
+</nav>
+<h1 class="text-center">SELF-REFLECTION</h1>
+<h3 class="text-center">Author: Daniel Wilson</h3>
+</header>
+<div id="full-container">
+<p>How would your past self describe you if they saw you now? Would they be proud of what you accomplished? Would you give any advice to your past self? The real question is "how would you know you would be happier if you didn't make those mistakes in the past"? The person I am today is from a combination of my experiences, how I was raised and the knowledge I accumulated throughout the years. Before thinking "what could I have been", I should remember that without those experiences in my life I would never know what I know now. Sometimes we can only truly learn something from experiencing it. Be proud of who you are and the journey you took to get here.</p>
+<div id="likes-container">
+<p id="likes">500</p>
+<button id="likeBTN"><img id="heart-image" src="/images/heart_image.JPG"></button>
+</div>
+<button id="postBTN">Post a Comment</button>
+<h3 id="comments-heading" class="text-center">Comments</h3>
+<p class="text-center" id="no-comments">no comments yet on this blog</p>
+<section id="users-comment">
+  <img id="userImg" src="images/guest.JPG" alt="picture">
+  <h3 class="text-center" id="user-name"></h3>
+  <p id="user-rating"></p>
+  <p id="user-text"></p>
+</section>
+<form class="text-center">
+<label class="d-block" for="name">First Name</label>
+<input class="d-block" type="text" id="fName" name="name" placeholder="Enter Your First Name" maxlength="8">
+<br>
+<label class="d-block" for="rating">Rate this blog(5 being the best):</label>
+  <input type= "radio" name="rating" value="1" id="rating1" required>1
+  <input type= "radio" name="rating" value="2" id="rating2">2
+  <input type= "radio" name="rating" value="3" id="rating3">3
+  <input type= "radio" name="rating" value="4" id="rating4">4
+  <input type= "radio" name="rating" value="5" id="rating5">5
+  <br>
+  <br>
+  <label for="message"></label>
+  <textarea name="message" id="message" cols="50" row="5" maxlength="30" placeholder="type comment(max 30 characters)"></textarea>
+  <button id="submitBTN" type="submit">Submit</button>  
+  <button type="reset">Reset</button>
+  <button id="cancelBTN">Cancel Comment</button> 
+</form>
+<script>
+
+let likeCount = 500;
+let rating ='';
+$('#likeBTN').click(function(){
+  if(likeCount === 500){
+likeCount++;
+$('#likes').text(likeCount);
+}
+else{
+  alert(`You can only like once but thanks for the gesture.`)
+}
+});
+$('#submitBTN').click(function(){
+  event.preventDefault();
+  getRadioChecked();
+  if($('#fName').val() === '' || $('#message').val() === '' || rating ===''){
+    alert('Please fill out the form entirely!');
+    return;
+  }
+  else{
+  let userName = $('#fName').val();
+  let userText = 'User Comment: ' + $('#message').val();
+  $('form').hide();
+  $('form').trigger("reset");
+  $('#likes-container').show();
+  $('#comments-heading').show();
+  $('#user-name').text(userName);
+  $('#user-rating').text(rating);
+  $('#user-text').text(userText);
+  $('#users-comment').css('display', 'grid');
+  $('#userImg').css('visibility', 'visible');
+  }
+});
+
+$('#postBTN').click(function(){
+  $('form').css('display', 'block');
+  $('#postBTN').hide();
+  $('#comments-heading').hide();
+  $('#no-comments').hide();
+  $('#likes-container').hide();
+})
+$('#cancelBTN').click(function(){
+  $('#form_id').trigger("reset");
+  $('form').css('display', 'none');
+  $('#postBTN').show();
+  $('#comments-heading').show();
+  $('#no-comments').show();
+  $('#likes-container').show();
+})
+function getRadioChecked(){
+  let radios = document.getElementsByName('rating');
+for (let i = 0; i< radios.length; i++) {
+  if (radios[i].checked) {
+    rating = ` User rating: ${radios[i].value} stars`;
+    console.log(rating);  
+}
+}
+}
+</script>
+</div>
+</body>
+</html>
