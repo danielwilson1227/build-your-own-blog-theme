@@ -268,83 +268,84 @@ form{
 </form>
 <script>
 let likeCount = 500,
-rating ='';
+	rating = '';
 
 /*User can only click on like button once*/
-$('#likeBTN').click(function(){
-if(likeCount === 500){
-  likeCount++;
-  $('#likes').text(likeCount);
-}
-else{
-  alert(`You can only like once but thanks for the gesture.`);
-}
+$('#likeBTN').click(function (){
+	if (likeCount === 500) {
+		likeCount++;
+		$('#likes').text(likeCount);
+	}
+	else {
+		alert(`You can only like once but thanks for the gesture.`);
+	}
 });
 
 /*If any part of the form is missing, alert user to fill out form completely. Else, grab values from form. hide form, show likes container and comments section. */
-$('#submitBTN').click(function(){
-  event.preventDefault();
-  getRadioChecked();
-  if($('#fName').val() === '' || $('#message').val() === '' || rating ===''){
-    alert('Please fill out the form entirely!');
-    return;
-  }
-  else{
-  let userName = $('#fName').val();
-  let userText = $('#message').val();
-  $('form').hide();
-  $('form').trigger("reset");
-  $('#likes-container').show();
-  $('#comments-heading').show();
-  $('#user-name').text(userName);
-  $('#user-rating').text(rating);
-  checkCommentLength(userText);
-  $('#users-comment').css('display', 'grid');
-  $('#userImg').css('visibility', 'visible');
-  setTime();
-  }
+$('#submitBTN').click(function (){
+	event.preventDefault();
+	getRadioChecked();
+	if ($('#fName').val() === '' || $('#message').val() === '' || rating === '') {
+		alert('Please fill out the form entirely!');
+		return;
+	}
+	else {
+		let userName = $('#fName').val();
+		let userText = $('#message').val();
+		$('form').hide();
+		$('form').trigger('reset');
+		$('#likes-container').show();
+		$('#comments-heading').show();
+		$('#user-name').text(userName);
+		$('#user-rating').text(rating);
+		checkCommentLength(userText);
+		$('#users-comment').css('display', 'grid');
+		$('#userImg').css('visibility', 'visible');
+		setTime();
+	}
 });
 
 /* new Date method gives us more values than we need. Slice new Date method to only include date and minutes without time zone nor milliseconds.*/
-function setTime(){
-  let expandedTime = new Date().toString();
-  let split = expandedTime.lastIndexOf(':');
-let displayedTime = expandedTime.slice(0, split);
-$('#displayedTime').text(displayedTime);
+function setTime (){
+	let expandedTime = new Date().toString();
+	let split = expandedTime.lastIndexOf(':');
+	let displayedTime = expandedTime.slice(0, split);
+	$('#displayedTime').text(displayedTime);
 }
 
 /*add User comment to User message depending on length of message*/
-function checkCommentLength(userText){
-  userText.length <= 8? $('#user-text').text('User Comment: ' + userText): $('#user-text').text(userText);
-  };
- 
+function checkCommentLength (userText){
+	userText.length <= 8 ? $('#user-text').text('User Comment: ' + userText) : $('#user-text').text(userText);
+}
+
 /* when user clicks on postBTN, display the form and hide other elements. */
-$('#postBTN').click(function(){
-  $('form').css('display', 'block');
-  $('#postBTN').hide();
-  $('#comments-heading').hide();
-  $('#no-comments').hide();
-  $('#likes-container').hide();
+$('#postBTN').click(function (){
+	$('form').css('display', 'block');
+	$('#postBTN').hide();
+	$('#comments-heading').hide();
+	$('#no-comments').hide();
+	$('#likes-container').hide();
 });
 
-$('#cancelBTN').click(function(){
-  $('#form_id').trigger("reset");
-  $('form').css('display', 'none');
-  $('#postBTN').show();
-  $('#comments-heading').show();
-  $('#no-comments').show();
-  $('#likes-container').show();
+$('#cancelBTN').click(function (){
+	$('#form_id').trigger('reset');
+	$('form').css('display', 'none');
+	$('#postBTN').show();
+	$('#comments-heading').show();
+	$('#no-comments').show();
+	$('#likes-container').show();
 });
 
 /*loop through HTML collection of radio buttons and if a radio is checked, grab value of checked user rating*/
-function getRadioChecked(){
-let radios = document.getElementsByName('rating');
-for (let i = 0; i< radios.length; i++) {
-  if (radios[i].checked) {
-    rating = ` User rating: ${radios[i].value} stars`;
+function getRadioChecked (){
+	let radios = document.getElementsByName('rating');
+	for (let i = 0; i < radios.length; i++) {
+		if (radios[i].checked) {
+			rating = ` User rating: ${radios[i].value} stars`;
+		}
+	}
 }
-}
-}
+
 </script>
 </div>
 </body>
