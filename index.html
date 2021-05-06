@@ -10,6 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Londrina+Outline&display=swap" rel="stylesheet">
 <link rel="shortcut icon" href="#" />
+<link rel="shortcut icon" type="image/x-icon" href="./images/favicon.ico">
 
 <style>
 * {
@@ -38,21 +39,21 @@ body {
 .text-center{
   text-align: center;
 }
-.d-block{
-  display: block;
+.text-left{
+  text-align: left; 
 }
-nav{
-  text-align: center; 
+button{
+  cursor: pointer;
 }
-li a{
+nav ul li a{
   text-decoration: none;
   margin: 0 0.5em;
   color: black;
 }
-li{
+nav ul li{
   display: inline;
 }
-li a:hover{
+nav ul li a:hover{
   color: green;
 }
 header h1, header h3{
@@ -68,27 +69,31 @@ header h3{
 }
 #blogText{
   width: 50%;
-  text-align: center;
   margin: 0 auto 1em auto;
 }
 #likes-container{
   margin: 0 auto;
-  text-align: center;
   width: 10%;
   height: 10%;
 }
-#likes-container button:first-of-type{
+#likes-container button{
   display: block;
   height: 50%;
   width: 50%;
   margin: 0 auto 0 auto;
 }
-#likes-container p:first-of-type{
+#likes-container p{
   margin-bottom: 0;
 }
 #heart-image{
   display: block;
   width: 100%;
+}
+#likeBTN{
+  transition: all 1s ease-in-out;
+}
+#likeBTN:hover{
+  transform: rotate(360deg);
 }
 #postBTN{
   padding: 1em;
@@ -102,22 +107,44 @@ header h3{
 #no-comments{
   margin-top: 0.5em;
 }
-form{
+#contactForm{
   display: none;
-  width: 50%;
+  width: 60%;
   border: solid black;
+  margin: 0 auto;
+}
+#contactForm h2{
+  border-bottom: solid black;
+  padding: 0.5em;
+}
+#contactFormContainer{
+  width: 65%;
   padding: 1em;
   margin: 0 auto;
 }
-label,input[type="text"], textarea{
+#contactFormContainer section{
+  margin: 1em auto;
   width: 100%;
 }
-input[type="text"]{
-  padding: 0.5em;
+#contactFormContainer section span{
+  display: none;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.2em;
 }
-form button{
+#contactFormContainer button{
   padding: 0.5em;
   margin: 0.5em;
+}
+#contactFormContainer section.error span{
+  display: block;
+}
+#contactFormContainer section.error span{
+  background-color: red;
+}
+label,input[type="text"], textarea{
+  width: 100%;
+  padding: 0.5em;
 }
 #users-comment{
   display: none;
@@ -178,9 +205,11 @@ header h3{
 #comments-heading, #no-comments{
  font-size: 1rem;
 }
-form{
+#contactForm{
+  width: 85%;
+}
+#contactFormContainer{
   width: 80%;
-  padding: 0.5em;
 }
 #users-comment{
   width: 55%;
@@ -188,7 +217,7 @@ form{
 }
 }
 @media(max-width: 399px){
-  header h1{
+header h1{
   margin: 0.4em 0 0 0;
   font-size: 1.7rem;
 }
@@ -209,9 +238,17 @@ header h3{
 #comments-heading, #no-comments{
  font-size: 0.8rem;
 }
-form{
-  width: 85%;
-  padding: 0.5em;
+#contactForm{
+  width: 90%;
+}
+#contactFormContainer{
+  width: 100%;
+}
+#contactForm h2{
+ font-size: 1.2rem;
+}
+#contactFormContainer section span{
+  font-size: 0.9rem;
 }
 #users-comment{
   width: 75%;
@@ -221,8 +258,9 @@ form{
 </style>
 </head>
 <body>
+
 <header>
-<nav>
+<nav class="text-center">
   <ul>
     <li><a href="#">Home</a></li>
     <li><a href="https://dan-personalwebsite.netlify.app/" target="_blank">About</a></li>
@@ -232,15 +270,17 @@ form{
 <h1 class="text-center">SELF-REFLECTION</h1>
 <h3 class="text-center">Author: Daniel Wilson</h3>
 </header>
+
 <div id="full-container">
-<p id="blogText">How would your past self describe you if they saw you now? Would they be proud of what you accomplished? Would you give any advice to your past self? The real question is "how would you know you would be happier if you didn't make those mistakes in the past"? The person I am today is from a combination of my experiences, how I was raised and the knowledge I accumulated throughout the years. Before thinking "what could I have been", I should remember that without those experiences in my life I would never know what I know now. Sometimes we can only truly learn something from experiencing it. Be proud of who you are and the journey you took to get here.</p>
-<div id="likes-container">
+<p class="text-center" id="blogText">How would your past self describe you if they saw you now? Would they be proud of what you accomplished? Would you give any advice to your past self? The real question is "how would you know you would be happier if you didn't make those mistakes in the past"? The person I am today is from a combination of my experiences, how I was raised and the knowledge I accumulated throughout the years. Before thinking "what could I have been", I should remember that without those experiences in my life I would never know what I know now. Sometimes we can only truly learn something from experiencing it. Be proud of who you are and the journey you took to get here.</p>
+<div class="text-center" id="likes-container">
 <p id="likes">500</p>
 <button id="likeBTN"><img alt="picture" id="heart-image" src="/images/heart_image.JPG"></button>
 </div>
-<button id="postBTN">Post a Comment</button>
+<button id="postBTN" class="text-left">Post a Comment</button>
 <h3 id="comments-heading" class="text-center">Comments</h3>
 <p class="text-center" id="no-comments">no comments yet on this blog</p>
+
 <section id="users-comment">
   <img id="userImg" src="images/guest.JPG" alt="picture">
   <h3 id="user-name"></h3>
@@ -248,23 +288,41 @@ form{
   <p id="user-text"></p>
   <p id="displayedTime"></p>
 </section>
-<form class="text-center">
-  <label class="d-block" for="fName">First Name</label>
-  <input class="d-block" type="text" id="fName" name="name" placeholder="Enter Your First Name" maxlength="6">
+
+<form id="contactForm" method="GET" class="text-center" enctype="application/x-www-form-urlencoded">
+  <h2>Post a comment</h2>
+  <section id="contactFormContainer">
+
+  <section id="userName">
+  <label>
+  <div class="text-left">First Name* </div>
+  <input type="text" id="nameField" name="name" placeholder="Enter Your First Name" maxlength="6" autocomplete="name" tabindex="1">
+  <span class="text-danger">Please enter your name</span>
+</label>
+</section>
+
+<section id="userRating">
+  <div class="text-center">Rate this blog* (5 being the best): </div>
+  <label><input type= "radio" name="rating" value="1">1</label>
+  <label><input type= "radio" name="rating" value="2">2</label>
+  <label><input type= "radio" name="rating" value="3">3</label>
+  <label><input type= "radio" name="rating" value="4">4</label>
+  <label><input type= "radio" name="rating" value="5">5</label>
   <br>
-  <label class="d-block" for="rating">Rate this blog(5 being the best):</label>
-  <input type= "radio" name="rating" value="1">1
-  <input type= "radio" name="rating" value="2">2
-  <input type= "radio" name="rating" value="3">3
-  <input type= "radio" name="rating" value="4">4
-  <input type= "radio" name="rating" value="5">5
-  <br>
-  <br>
-  <label for="message"></label>
-  <textarea name="message" id="message" cols="50" maxlength="30" placeholder="type comment(max 30 characters)"></textarea>
-  <button id="submitBTN" type="submit">Submit</button>  
-  <button type="reset">Reset</button>
+  <span class="text-danger">Please enter your rating</span>
+</section>
+
+<section id="userComment">
+  <label><div class="text-left">Your Comment*: </div>
+  <textarea name="message" id="commentField" cols="50" maxlength="30" placeholder="type comment(max 30 characters)"></textarea>
+</label>
+<span class="text-danger">Please enter your comment</span>
+</section>
+
+  <button id="submitBTN" type="submit">Submit Comment</button>  
+  <button id="resetBTN" type="reset">Reset Form</button>
   <button id="cancelBTN">Cancel Comment</button> 
+</section>
 </form>
 <script>
 let likeCount = 500,
@@ -281,17 +339,31 @@ $('#likeBTN').click(function (){
 	}
 });
 
-/*If any part of the form is missing, alert user to fill out form completely. Else, grab values from form. hide form, show likes container and comments section. */
-$('#submitBTN').click(function (){
-	event.preventDefault();
-	getRadioChecked();
-	if ($('#fName').val() === '' || $('#message').val() === '' || rating === '') {
-		alert('Please fill out the form entirely!');
-		return;
-	}
-	else {
-		let userName = $('#fName').val();
-		let userText = $('#message').val();
+/*If any part of the form is missing, display span error on element that is missing. Else, grab values from form. hide form, show likes container and comments section. */
+document.querySelector("#contactForm").addEventListener('submit', function (e){
+  e.preventDefault();
+  removeError();
+  if(!document.forms["contactForm"]["nameField"].value){
+    $('#userName').addClass("error");
+    return false;
+    }
+
+  else{
+    getRadioChecked();
+    };
+
+  if(rating === ''){
+    $('#userRating').addClass("error");
+    return false;
+    };
+
+  if(!document.forms["contactForm"]["commentField"].value){
+    $('#userComment').addClass("error");
+    return false;
+    }
+  else {
+		let userName = $('#nameField').val();
+		let userText = $('#commentField').val();
 		$('form').hide();
 		$('form').trigger('reset');
 		$('#likes-container').show();
@@ -302,8 +374,18 @@ $('#submitBTN').click(function (){
 		$('#users-comment').css('display', 'grid');
 		$('#userImg').css('visibility', 'visible');
 		setTime();
-	}
+    alert('Your comment has been posted!')
+	  }
 });
+
+// loop through form sections and remove the error class that displays error when user didn't complete that section of the form
+function removeError(){
+  let requiredInputs =['userName', 'userRating', 'userComment' ];
+  requiredInputs.forEach(function(n){
+  document.getElementById(n).classList.remove("error");
+}
+)
+};
 
 /* new Date method gives us more values than we need. Slice new Date method to only include date and minutes without time zone nor milliseconds.*/
 function setTime (){
@@ -320,6 +402,7 @@ function checkCommentLength (userText){
 
 /* when user clicks on postBTN, display the form and hide other elements. */
 $('#postBTN').click(function (){
+  removeError();
 	$('form').css('display', 'block');
 	$('#postBTN').hide();
 	$('#comments-heading').hide();
@@ -328,12 +411,16 @@ $('#postBTN').click(function (){
 });
 
 $('#cancelBTN').click(function (){
-	$('#form_id').trigger('reset');
+	$('#contactForm').trigger('reset');
 	$('form').css('display', 'none');
 	$('#postBTN').show();
 	$('#comments-heading').show();
 	$('#no-comments').show();
 	$('#likes-container').show();
+});
+
+$('#resetBTN').click(function(){
+  removeError();
 });
 
 /*loop through HTML collection of radio buttons and if a radio is checked, grab value of checked user rating*/
