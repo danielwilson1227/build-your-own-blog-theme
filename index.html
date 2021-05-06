@@ -352,7 +352,7 @@ document.querySelector("#contactForm").addEventListener('submit', function (e){
     getRadioChecked();
     };
 
-  if(rating === ''){
+  if(!rating){
     $('#userRating').addClass("error");
     return false;
     };
@@ -422,6 +422,7 @@ $('#cancelBTN').click(function (){
 
 $('#resetBTN').click(function(){
   removeError();
+  rating="";
 });
 
 /*loop through HTML collection of radio buttons and if a radio is checked, grab value of checked user rating*/
